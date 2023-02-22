@@ -16,7 +16,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   void initState() {
     super.initState();
-    _unusedImages = List.generate(5, (index) => 'assets/image${index + 1}.jpg');
+    _unusedImages = List.generate(10, (index) => 'assets/images/image${index + 1}.jpg');
     _topImagePath = _unusedImages.removeAt(Random().nextInt(_unusedImages.length));
     _bottomImagePath = _unusedImages.removeAt(Random().nextInt(_unusedImages.length));
   }
