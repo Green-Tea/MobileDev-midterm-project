@@ -35,39 +35,31 @@ class _MainScreenState extends State<MainScreen> {
       }
     });
   }
+  
+  
 
   @override
   Widget build(BuildContext context) {
     double halfScreenHeight = MediaQuery.of(context).size.height / 2.0;
 
+    Widget buildButton(String imagePath) {
+      return Expanded(
+          child: InkWell(
+              onTap: () => _onButtonPressed(imagePath),
+              child: SizedBox(
+                height: halfScreenHeight,
+                child: Image.asset(imagePath, fit: BoxFit.cover),
+              )
+          )
+      );
+    }
+    
     return Scaffold(
       backgroundColor: Colors.redAccent,
       body: Column(
         children: [
-          Expanded(
-            child: InkWell(
-              onTap: () => _onButtonPressed(_topImagePath),
-              child: Container(
-                height: halfScreenHeight,
-                child: Image.asset(
-                  _topImagePath,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-          ),
-          Expanded(
-            child: InkWell(
-              onTap: () => _onButtonPressed(_bottomImagePath),
-              child: Container(
-                height: halfScreenHeight,
-                child: Image.asset(
-                  _bottomImagePath,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-          ),
+          buildButton(_topImagePath),
+          buildButton(_bottomImagePath),
         ],
       ),
     );
